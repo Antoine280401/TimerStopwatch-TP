@@ -14,7 +14,7 @@ class StopwatchTests {
 
 	@BeforeEach
 	void setup() {
-		context = new Context(); // create the state machine context
+		context = new Context(); // create the state machine context comm
 		AbstractStopwatch.resetInitialValues();
 		context.currentState = AbstractStopwatch.Instance();
 	}
