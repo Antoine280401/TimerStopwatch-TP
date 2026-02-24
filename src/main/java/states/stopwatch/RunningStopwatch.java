@@ -20,7 +20,7 @@ public class RunningStopwatch extends ActiveStopwatch {
     
     @Override
     public ClockState right() {
-        return transition(ResetStopwatch.Instance());
+        return transition(ResetStopwatch.instance());
     }
     public String getRightText() {return "reset"; }
     

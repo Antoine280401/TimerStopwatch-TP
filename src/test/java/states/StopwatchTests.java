@@ -30,7 +30,7 @@ class StopwatchTests {
 		current = context.currentState;
 
 		assertEquals(Mode.stopwatch, current.getMode());
-		assertSame(ResetStopwatch.Instance(), current);
+		assertSame(ResetStopwatch.instance(), current);
 		assertEquals(0, AbstractStopwatch.getTotalTime(),"For the value of totalTime we ");
 		assertEquals(0, AbstractStopwatch.getLapTime(),"For the value of lapTime we ");
 	}
@@ -39,7 +39,7 @@ class StopwatchTests {
 	@DisplayName("Verify AbstractStopwatch initial state is ResetStopwatch")
 	void testInitialAbstractStopwatch() {
 		// The initial state of composite state AbstractStopwatch should be ResetStopwatch
-		assertSame(AbstractStopwatch.Instance(), ResetStopwatch.Instance());
+		assertSame(AbstractStopwatch.Instance(), ResetStopwatch.instance());
 	}
 
 	@Test
