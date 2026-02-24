@@ -23,11 +23,11 @@ public class HeadlessGUI {
 
     public HeadlessGUI(EventListener o) {
         observer = o;
-        initGUI();
-        addEventListener(); }
-    
-    protected void initGUI() {
-        //Notice that we initialise three buttons and three labels but we never display them.
+        internalInitGUI(); // Call private method
+        internalAddEventListener(); // Call private method
+    }
+
+    private void internalInitGUI() {
         b1 = new JButton();
         b2 = new JButton();
         b3 = new JButton();
@@ -36,13 +36,20 @@ public class HeadlessGUI {
         myText3 = new JLabel();
     }
 
-    protected void addEventListener() {
-    	// compact way of adding action listeners (since Java8, using lambda expressions)
-    	b1.addActionListener(e -> observer.left());
+    private void internalAddEventListener() {
+        b1.addActionListener(e -> observer.left());
         b2.addActionListener(e -> observer.up());
         b3.addActionListener(e -> observer.right());
-   }
-    
+    }
+
+    protected void initGUI() {
+        internalInitGUI();
+    }
+
+    protected void addEventListener() {
+        internalAddEventListener();
+    }
+
     public void updateUI(Context c) {
         myText1.setText(c.getDisplayText());
         myText2.setText(c.getModeText());
@@ -52,5 +59,5 @@ public class HeadlessGUI {
         b2.setText(c.getUpText());
         b3.setText(c.getRightText());
     }
-       
+
 }
