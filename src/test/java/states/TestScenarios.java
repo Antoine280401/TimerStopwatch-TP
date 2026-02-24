@@ -55,7 +55,7 @@ class TestScenarios {
 
 		c.left(); // go to stopwatch mode
 		c.tick();
-		assertSame(ResetStopwatch.Instance(), c.currentState);
+		assertSame(ResetStopwatch.instance(), c.currentState);
 		assertEquals(0, AbstractStopwatch.getTotalTime(),"value of totalTime ");
 		assertEquals(0, AbstractStopwatch.getLapTime(),"value of lapTime ");
 
