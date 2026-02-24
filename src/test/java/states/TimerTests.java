@@ -29,6 +29,7 @@ class TimerTests {
 	    assertSame(IdleTimer.Instance(), current);
 	    assertEquals(0, AbstractTimer.getTimer(),"For the value of timer we ");
 	    assertEquals(0, AbstractTimer.getMemTimer(),"For the value of memTimer we ");
+		assertEquals(false, RingingTimer.getRing());
 	}
 	
 	@Test
@@ -54,5 +55,6 @@ class TimerTests {
 		 */
 		assertEquals(current, newState.left());
 	}
+
 
 }

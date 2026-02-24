@@ -23,6 +23,7 @@ class TestScenarios {
   void completeScenario() {
 	  assertEquals(IdleTimer.Instance(),c.currentState);
 	  assertEquals(0,AbstractTimer.getMemTimer());
+	  assertEquals(false, RingingTimer.getRing());
 	  
 	  c.right(); // start incrementing the memTimer variable
 	  c.tick();
@@ -83,6 +84,7 @@ class TestScenarios {
 	  assertSame(RingingTimer.Instance(), c.currentState);
 	  assertEquals(2, AbstractTimer.getMemTimer(),"value of memTimer ");
 	  assertEquals(0, AbstractTimer.getTimer(),"value of timer ");
+	  assertEquals(true, RingingTimer.getRing());
 	  
 	  c.right(); // return to idle timer state
 	  c.tick();
