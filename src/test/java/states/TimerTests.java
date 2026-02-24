@@ -9,7 +9,6 @@ import states.stopwatch.AbstractStopwatch;
 class TimerTests {
 
 	private static Context context;
-	private ClockState current, newState;
 
 	@BeforeEach
 	void setup() {
@@ -24,7 +23,7 @@ class TimerTests {
 		 * its currentState will be initialised with the initial state
 		 * of timer, i.e. the IdleTimer state.
 		 */
-		current = context.currentState;
+		ClockState current = context.currentState;
 
 		assertEquals(Mode.timer, current.getMode());
 		assertSame(IdleTimer.Instance(), current);
@@ -49,9 +48,9 @@ class TimerTests {
 	@Test
 	@DisplayName("Test history state implementation for Timer mode")
 	void testHistoryState() {
-		current = AbstractTimer.Instance();
+		ClockState current = AbstractTimer.Instance();
 		// after processing the left() event, we should arrive in the initial state of AbstractStopwatch
-		newState = current.left();
+		ClockState newState = current.left();
 		assertEquals(AbstractStopwatch.Instance(), newState);
 		/* after another occurrence of the left() event, we should return to the original state
 		 * because we used history states

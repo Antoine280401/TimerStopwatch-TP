@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class StopwatchTests {
 
 	private static Context context;
-	private ClockState current, newState;
 
 	@BeforeEach
 	void setup() {
@@ -27,7 +26,7 @@ class StopwatchTests {
 		 * its currentState will be inialised with the initial state
 		 * of timer, i.e. the IdleTimer state.
 		 */
-		current = context.currentState;
+		ClockState current = context.currentState;
 
 		assertEquals(Mode.stopwatch, current.getMode());
 		assertSame(ResetStopwatch.Instance(), current);
@@ -45,9 +44,9 @@ class StopwatchTests {
 	@Test
 	@DisplayName("Test history state implementation for Stopwatch mode")
 	void testHistoryState() {
-		current = AbstractStopwatch.Instance();
+		ClockState current = AbstractStopwatch.Instance();
 		// after processing the left() event, we should arrive in the initial state of AbstractStopwatch
-		newState = current.left();
+		ClockState newState = current.left();
 		assertEquals(AbstractTimer.Instance(), newState);
 		/* after another occurrence of the left() event, we should return to the original state
 		 * because we used history states
